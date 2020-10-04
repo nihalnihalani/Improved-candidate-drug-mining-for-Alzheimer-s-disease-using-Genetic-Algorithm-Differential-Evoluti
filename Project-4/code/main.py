@@ -16,3 +16,7 @@ from sklearn.exceptions import ConvergenceWarning
 from warnings import simplefilter
 from sklearn.exceptions import ConvergenceWarning
 from sklearn import linear_model, svm, neural_network
+
+class DrugDiscovery:
+    descriptors = None
+    targets = None
