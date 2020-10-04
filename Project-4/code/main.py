@@ -28,3 +28,4 @@ class DrugDiscovery:
     Y_Valid = None
     Y_Test = None
     Data = None
+    binary_model = None
