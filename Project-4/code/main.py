@@ -20,3 +20,6 @@ from sklearn import linear_model, svm, neural_network
 class DrugDiscovery:
     descriptors = None
     targets = None
+    active_descriptors = None
+    X_Train = None
+    X_Valid = None
