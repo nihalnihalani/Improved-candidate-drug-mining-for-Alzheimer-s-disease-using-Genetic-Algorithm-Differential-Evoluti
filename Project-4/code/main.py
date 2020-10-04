@@ -29,3 +29,7 @@ class DrugDiscovery:
     Y_Test = None
     Data = None
     binary_model = None
+
+    def __init__(self, descriptors_file, targets_file):
+        self.descriptors = self.open_descriptor_matrix(descriptors_file)
+        self.targets = self.open_target_values(targets_file)
