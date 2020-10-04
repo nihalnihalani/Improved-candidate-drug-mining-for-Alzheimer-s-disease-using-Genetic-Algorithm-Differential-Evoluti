@@ -23,3 +23,8 @@ class DrugDiscovery:
     active_descriptors = None
     X_Train = None
     X_Valid = None
+    X_Test = None
+    Y_Train = None
+    Y_Valid = None
+    Y_Test = None
+    Data = None
