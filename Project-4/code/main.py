@@ -33,3 +33,11 @@ class DrugDiscovery:
     def __init__(self, descriptors_file, targets_file):
         self.descriptors = self.open_descriptor_matrix(descriptors_file)
         self.targets = self.open_target_values(targets_file)
+#**********************************************************************************************
+    def processData(self):
+        self.descriptors, self.targets = self.removeInvalidData(self.descriptors, self.targets)
+        self.descriptors, self.active_descriptors = self.removeNearConstantColumns(self.descriptors)
+        # Rescale the descriptor data
+        self.descriptors = self.rescale_data(self.descriptors)
+        #sort data
+        self.descriptors, self.targets = self.sort_descriptor_matrix(self.descriptors, self.targets)
