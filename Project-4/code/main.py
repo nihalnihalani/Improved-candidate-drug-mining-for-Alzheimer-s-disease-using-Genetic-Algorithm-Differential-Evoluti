@@ -49,3 +49,5 @@ class DrugDiscovery:
         print(str(self.descriptors.shape[1]) + " valid descriptors and " + str(self.targets.__len__()) + " molecules available.")
         return self.X_Train, self.X_Valid, self.X_Test, self.Y_Train, self.Y_Valid, self.Y_Test, self.data
     #**********************************************************************************************
+    # Set up the demonstration model
+    def setUpDemoModel(self):
