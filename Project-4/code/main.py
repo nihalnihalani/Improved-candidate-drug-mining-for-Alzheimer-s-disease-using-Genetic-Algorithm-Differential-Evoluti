@@ -51,3 +51,18 @@ class DrugDiscovery:
     #**********************************************************************************************
     # Set up the demonstration model
     def setUpDemoModel(self):
+    	# featured_descriptors = [4, 8, 12, 16]  # These indices are "false", applying only to the truncated post-filter descriptor matrix.
+        binary_model = zeros((50, 593))
+        count = 0
+        for i in range(50):
+            for j in range(593):
+                r = random.randint(0, 593)
+                L = int(0.015 * 593)
+
+                if r < L:
+                    binary_model[i][j] = 1
+                    count += 1
+            if count > 5 and count < 25:
+                continue
+            else:
+                i -= 1
