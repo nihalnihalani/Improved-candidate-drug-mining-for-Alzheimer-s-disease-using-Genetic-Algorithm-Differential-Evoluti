@@ -66,3 +66,6 @@ class DrugDiscovery:
                 continue
             else:
                 i -= 1
+     #**********************************************************************************************
+    # Create a Multiple Linear Regression object to fit our demonstration model to the data
+    def runModel(self, regressor, instructions):
