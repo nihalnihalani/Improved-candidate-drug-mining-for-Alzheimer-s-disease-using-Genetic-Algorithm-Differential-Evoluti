@@ -69,3 +69,9 @@ class DrugDiscovery:
      #**********************************************************************************************
     # Create a Multiple Linear Regression object to fit our demonstration model to the data
     def runModel(self, regressor, instructions):
+    	trackDesc, trackFitness, trackModel, trackDimen, trackR2train, trackR2valid, trackR2test, testRMSE, testMAE, testAccPred = self.evaluate_population(model=regressor, instructions=instructions, data=self.data,
+                                                                                                                                                            population=self.binary_model, exportfile=None)
+        self.outputModelInfo(trackDesc, trackFitness, trackModel, trackDimen, trackR2train, trackR2valid, trackR2test, testRMSE, testMAE, testAccPred)
+
+    #**********************************************************************************************
+
