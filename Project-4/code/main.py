@@ -151,3 +151,7 @@ class DrugDiscovery:
 
     #         df2 = df.sort_values('fitness')
     #         order = []
+    
+    #         order=df2['order'].values.tolist()
+    #         binary_model2 = population.copy()
+
