@@ -112,5 +112,10 @@ class DrugDiscovery:
     #             population[i] = self.getValidRow()
     #         # self.outputModelInfo(trackDesc, trackFitness, trackModel, trackDimen, trackR2train, trackR2valid, trackR2test, testRMSE, testMAE, testAccPred)
     #         population = self.mutatePopulation(population)
+    
+    # def DifferentialEvolutionModel(self, regressor, instructions, numGenerations, fileW):
 
+    #     fileW.writerow(['Descriptor ID', 'Fitness', 'Algorithm', 'Dimen', 'R2_Train', 'R2_Valid', 'R2_Test', 'RMSE', 'MAE', 'Abs. Errors'])
+    #     population = zeros((50,self.X_Train.shape[1]))
 
+    #     for i in range(50):
