@@ -112,10 +112,33 @@ class DrugDiscovery:
     #             population[i] = self.getValidRow()
     #         # self.outputModelInfo(trackDesc, trackFitness, trackModel, trackDimen, trackR2train, trackR2valid, trackR2test, testRMSE, testMAE, testAccPred)
     #         population = self.mutatePopulation(population)
-    
+
     # def DifferentialEvolutionModel(self, regressor, instructions, numGenerations, fileW):
 
     #     fileW.writerow(['Descriptor ID', 'Fitness', 'Algorithm', 'Dimen', 'R2_Train', 'R2_Valid', 'R2_Test', 'RMSE', 'MAE', 'Abs. Errors'])
     #     population = zeros((50,self.X_Train.shape[1]))
 
     #     for i in range(50):
+    #             population[i] = self.getValidRow()
+
+
+    #     for generation in range(numGenerations):
+    #         print("Epoch ", generation,"/",numGenerations)
+
+    #         trackDesc, trackFitness, trackModel, \
+    #         trackDimen, trackR2train, trackR2valid, \
+    #         trackR2test, testRMSE, testMAE, \
+    #         testAccPred = self.evaluate_population(model=regressor, instructions=instructions, data=self.data,population=population, exportfile=fileW)
+    #         counter = 0
+    #         dummy = []
+    #         trail = []
+    #         for i in range(50):
+    #             trail.append(i)
+
+    #         for key in trackDesc.keys():
+    #             dummy.append(trackFitness[key])
+
+    #         df = pd.DataFrame(dummy)
+    #         df.columns = ['fitness']
+    #         df1 = pd.DataFrame(trail)
+    #         df1.columns = ['order']
