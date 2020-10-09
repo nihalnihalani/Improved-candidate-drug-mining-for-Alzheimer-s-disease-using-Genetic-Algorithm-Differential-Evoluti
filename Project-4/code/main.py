@@ -142,3 +142,11 @@ class DrugDiscovery:
     #         df.columns = ['fitness']
     #         df1 = pd.DataFrame(trail)
     #         df1.columns = ['order']
+    
+    #         # print('Now df1!')
+    #         # print(df1)
+    #         df['order'] = df1
+
+
+
+    #         df2 = df.sort_values('fitness')
