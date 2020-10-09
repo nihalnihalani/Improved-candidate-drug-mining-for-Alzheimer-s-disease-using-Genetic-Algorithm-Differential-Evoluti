@@ -154,4 +154,17 @@ class DrugDiscovery:
     
     #         order=df2['order'].values.tolist()
     #         binary_model2 = population.copy()
+#         for i in range(len(order)):
+
+    #         	a = order[i]
+    #         	binary_model2[i] = population[a]
+
+    #         population = binary_model2
+    #         oldPopulation = population
+    #         F = 0.7
+    #         CV = 0.7
+    #         for i in range(1, 50):
+
+
+    #             V = zeros(593)
 
