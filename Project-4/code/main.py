@@ -181,3 +181,12 @@ class DrugDiscovery:
     #             	else:
     #             		continue
 
+    #         for i in range(0,50):
+    #             check  = 0
+    #             for j in range(0,593):
+    #                 if population[i, j] == 1:
+    #                     check += 1
+
+    #             if check < 5 or check > 25:
+    #                 population[i] = self.getValidRow()
+    #         # print(population)
