@@ -191,3 +191,6 @@ class DrugDiscovery:
     #                 population[i] = self.getValidRow()
     #         # print(population)
     def removeNearConstantColumns(self, data_matrix, num_unique=10):
+    	useful_descriptors = [col for col in range(data_matrix.shape[1])
+                              if len(set(data_matrix[:, col])) > num_unique]
+        filtered_matrix = data_matrix[:, useful_descriptors]
