@@ -190,3 +190,4 @@ class DrugDiscovery:
     #             if check < 5 or check > 25:
     #                 population[i] = self.getValidRow()
     #         # print(population)
+    def removeNearConstantColumns(self, data_matrix, num_unique=10):
