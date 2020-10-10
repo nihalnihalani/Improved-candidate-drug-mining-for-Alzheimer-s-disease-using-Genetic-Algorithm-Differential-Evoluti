@@ -151,10 +151,10 @@ class DrugDiscovery:
 
     #         df2 = df.sort_values('fitness')
     #         order = []
-    
+
     #         order=df2['order'].values.tolist()
     #         binary_model2 = population.copy()
-#         for i in range(len(order)):
+    #         for i in range(len(order)):
 
     #         	a = order[i]
     #         	binary_model2[i] = population[a]
@@ -167,4 +167,6 @@ class DrugDiscovery:
 
 
     #             V = zeros(593)
-
+    #             a = random.randint(0, 49)
+    #             b = random.randint(0, 49)
+    #             c = random.randint(0, 49)
