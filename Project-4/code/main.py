@@ -170,3 +170,14 @@ class DrugDiscovery:
     #             a = random.randint(0, 49)
     #             b = random.randint(0, 49)
     #             c = random.randint(0, 49)
+
+
+    #             for j in range(self.X_Train.shape[1]):
+    #             	V[j] = math.floor(abs(oldPopulation[a,j] + (F * (oldPopulation[b,j]-oldPopulation[c,j]))))
+
+    #             	rand_num = random.uniform(0, 1)
+    #             	if (rand_num < CV):
+    #             		population[i, j] = V[j]
+    #             	else:
+    #             		continue
+
