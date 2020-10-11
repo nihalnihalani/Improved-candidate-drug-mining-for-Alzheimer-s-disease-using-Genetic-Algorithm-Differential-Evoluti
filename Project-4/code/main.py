@@ -207,6 +207,7 @@ class DrugDiscovery:
         rescaled_matrix = (df - df.values.mean()) / (df.values.std())
         print("Rescaled Matrix is: ")
         rescaled_matrix.to_csv("rescaledmatrix.csv")
+        print(rescaled_matrix)
 
 
 
