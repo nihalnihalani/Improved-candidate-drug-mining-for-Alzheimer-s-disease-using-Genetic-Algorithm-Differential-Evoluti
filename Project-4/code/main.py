@@ -208,6 +208,7 @@ class DrugDiscovery:
         print("Rescaled Matrix is: ")
         rescaled_matrix.to_csv("rescaledmatrix.csv")
         print(rescaled_matrix)
+        return rescaled_matrix
 
 
 
