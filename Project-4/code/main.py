@@ -194,3 +194,7 @@ class DrugDiscovery:
     	useful_descriptors = [col for col in range(data_matrix.shape[1])
                               if len(set(data_matrix[:, col])) > num_unique]
         filtered_matrix = data_matrix[:, useful_descriptors]
+        remaining_desc = zeros(data_matrix.shape[1])
+        remaining_desc[useful_descriptors] = 1
+
+        return filtered_matrix, where(remaining_desc == 1)[0]
