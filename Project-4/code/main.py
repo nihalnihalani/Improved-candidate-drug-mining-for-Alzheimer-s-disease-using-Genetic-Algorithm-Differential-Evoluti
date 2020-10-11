@@ -219,6 +219,9 @@ class DrugDiscovery:
         descriptors = alldata[:, 1:alldata.shape[1]]
         targets = alldata[:, 0]
         return descriptors, targets
+    #**********************************************************************************************
+    # Performs a simple split of the data into training, validation, and testing sets.
+    # So how does it relate to the Data Mining Prediction?
 
 
 
