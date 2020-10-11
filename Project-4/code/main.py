@@ -223,7 +223,12 @@ class DrugDiscovery:
     # Performs a simple split of the data into training, validation, and testing sets.
     # So how does it relate to the Data Mining Prediction?
     def simple_split(self, descriptors, targets):
+    	
+        testX_indices = [i for i in range(descriptors.shape[0]) if i % 4 == 0]
+        validX_indices = [i for i in range(descriptors.shape[0]) if i % 4 == 1]
+        trainX_indices = [i for i in range(descriptors.shape[0]) if i % 4 >= 2]
 
+     
 
 
 
