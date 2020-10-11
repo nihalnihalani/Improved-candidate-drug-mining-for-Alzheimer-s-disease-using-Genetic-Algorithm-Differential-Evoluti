@@ -198,3 +198,19 @@ class DrugDiscovery:
         remaining_desc[useful_descriptors] = 1
 
         return filtered_matrix, where(remaining_desc == 1)[0]
+
+    
+    #**********************************************************************************************
+    def rescale_data(self, descriptor_matrix):
+        # Statistics for dataframe
+
+
+
+
+
+
+
+
+
+
+
