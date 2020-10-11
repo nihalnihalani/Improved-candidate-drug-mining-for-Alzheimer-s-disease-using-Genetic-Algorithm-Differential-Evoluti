@@ -199,10 +199,14 @@ class DrugDiscovery:
 
         return filtered_matrix, where(remaining_desc == 1)[0]
 
-    
+
     #**********************************************************************************************
     def rescale_data(self, descriptor_matrix):
         # Statistics for dataframe
+        df = pd.DataFrame(descriptor_matrix)
+        rescaled_matrix = (df - df.values.mean()) / (df.values.std())
+        print("Rescaled Matrix is: ")
+        rescaled_matrix.to_csv("rescaledmatrix.csv")
 
 
 
