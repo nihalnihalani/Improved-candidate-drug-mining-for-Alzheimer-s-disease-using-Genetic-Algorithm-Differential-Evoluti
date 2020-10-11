@@ -222,6 +222,8 @@ class DrugDiscovery:
     #**********************************************************************************************
     # Performs a simple split of the data into training, validation, and testing sets.
     # So how does it relate to the Data Mining Prediction?
+    def simple_split(self, descriptors, targets):
+
 
 
 
