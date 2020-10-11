@@ -209,6 +209,8 @@ class DrugDiscovery:
         rescaled_matrix.to_csv("rescaledmatrix.csv")
         print(rescaled_matrix)
         return rescaled_matrix
+    #**********************************************************************************************
+    def sort_descriptor_matrix(self, descriptors, targets):
 
 
 
