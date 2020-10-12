@@ -238,6 +238,7 @@ class DrugDiscovery:
 
         return TrainX, ValidX, TestX, TrainY, ValidY, TestY
 
+    def evaluate_population(self, model, instructions, data, population, exportfile):
 
 
 
