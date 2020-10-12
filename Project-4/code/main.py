@@ -232,7 +232,11 @@ class DrugDiscovery:
         ValidX = descriptors[validX_indices, :]
         TestX = descriptors[testX_indices, :]
 
+        TrainY = targets[trainX_indices]
+        ValidY = targets[validX_indices]
+        TestY = targets[testX_indices]
 
+        return TrainX, ValidX, TestX, TrainY, ValidY, TestY
 
 
 
