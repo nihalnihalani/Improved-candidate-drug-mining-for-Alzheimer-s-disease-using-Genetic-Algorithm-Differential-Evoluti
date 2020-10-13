@@ -243,6 +243,13 @@ class DrugDiscovery:
         fitness = zeros(numOfPop)
         predictive = 0
 
+        TrainX = data['TrainX']
+        TrainY = data['TrainY']
+        ValidateX = data['ValidateX']
+        ValidateY = data['ValidateY']
+        TestX = data['TestX']
+        TestY = data['TestY']
+        UsedDesc = data['UsedDesc']
 
 
 
