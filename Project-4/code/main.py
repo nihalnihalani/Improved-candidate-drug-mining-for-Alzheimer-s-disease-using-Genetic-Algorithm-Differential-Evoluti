@@ -253,7 +253,7 @@ class DrugDiscovery:
 
         trackDesc, trackFitness, trackModel, trackDimen, trackR2, trackR2PredValidation, \
         trackR2PredTest, trackRMSE, trackMAE, trackAcceptPred, trackCoefficients = self.InitializeTracks()
-        
+
         unfit = 1000
 
         for i in range(numOfPop):
@@ -272,6 +272,20 @@ class DrugDiscovery:
                 model = model.fit(X_train_masked, TrainY)
             except:
                 return unfit, fitness
+
+          	
+            # Computed predicted values
+            Yhat_training = model.predict(X_train_masked)
+            Yhat_validation = model.predict(X_validation_masked)
+            Yhat_testing = model.predict(X_test_masked)
+
+            # Compute R2 scores (Prediction for Validation and Test set)
+            r2_train = model.score(X_train_masked, TrainY)
+            r2validation = model.score(X_validation_masked, ValidateY)
+            r2test = model.score(X_test_masked, TestY)
+            model_rmse, num_acceptable_preds = self.calculateRMSE(TestY, Yhat_testing)
+            model_mae = self.calculateMAE(TestY, Yhat_testing)
+
 
 
 
