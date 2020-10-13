@@ -251,6 +251,10 @@ class DrugDiscovery:
         TestY = data['TestY']
         UsedDesc = data['UsedDesc']
 
+        trackDesc, trackFitness, trackModel, trackDimen, trackR2, trackR2PredValidation, \
+        trackR2PredTest, trackRMSE, trackMAE, trackAcceptPred, trackCoefficients = self.InitializeTracks()
+
+
 
 
 
