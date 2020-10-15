@@ -340,6 +340,10 @@ class DrugDiscovery:
         trackAcceptPred = {}
         trackCoefficients = {}
 
+        return trackDesc, trackFitness, trackAlgo, trackDimen, trackR2, trackR2PredValidation, trackR2PredTest, \
+               trackRMSE, trackMAE, trackAcceptPred, trackCoefficients
+    #**********************************************************************************************
+
 
 
 
