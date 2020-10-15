@@ -366,6 +366,8 @@ class DrugDiscovery:
         return fitness
 
     def calculateMAE(self, experimental, predictions):
+    	errors = [abs(experimental[i] - predictions[i]) for i in range(experimental.__len__())]
+        return sum(errors) / experimental.__len__()
 
 
 
