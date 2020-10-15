@@ -273,7 +273,7 @@ class DrugDiscovery:
             except:
                 return unfit, fitness
 
-          	
+
             # Computed predicted values
             Yhat_training = model.predict(X_train_masked)
             Yhat_validation = model.predict(X_validation_masked)
@@ -315,6 +315,12 @@ class DrugDiscovery:
                 trackRMSE[idx] = self.sigfig(model_rmse)
                 trackMAE[idx] = self.sigfig(model_mae)
                 trackAcceptPred[idx] = self.sigfig(float(num_acceptable_preds) / float(Yhat_testing.shape[0]))
+
+            # For loop ends here.
+
+        self.write(exportfile, trackDesc, trackFitness, trackModel, trackDimen, trackR2, trackR2PredValidation, trackR2PredTest, trackRMSE, trackMAE, trackAcceptPred)
+
+        return trackDesc, trackFitness
 
 
 
