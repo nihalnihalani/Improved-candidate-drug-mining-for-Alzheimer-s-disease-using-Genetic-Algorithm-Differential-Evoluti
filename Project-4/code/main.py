@@ -326,6 +326,20 @@ class DrugDiscovery:
     def sigfig(self, x):
         return float("%.4f"%x)
 
+    #**********************************************************************************************
+    def InitializeTracks(self):
+        trackDesc = {}
+        trackFitness = {}
+        trackAlgo = {}
+        trackDimen = {}
+        trackR2 = {}
+        trackR2PredValidation = {}
+        trackR2PredTest = {}
+        trackRMSE = {}
+        trackMAE = {}
+        trackAcceptPred = {}
+        trackCoefficients = {}
+
 
 
 
