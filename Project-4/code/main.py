@@ -365,7 +365,7 @@ class DrugDiscovery:
 
         return fitness
 
-
+    def calculateMAE(self, experimental, predictions):
 
 
 
