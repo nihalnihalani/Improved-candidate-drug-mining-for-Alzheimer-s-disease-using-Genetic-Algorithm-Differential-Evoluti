@@ -356,7 +356,14 @@ class DrugDiscovery:
         numerator = ((mT - n - 1) * RMSE_t) + (mV * RMSE_v)
         denominator = mT - (gamma * n) - 1 + mV
         fitness = sqrt(numerator/denominator)
+        # Adjusting for high-dimensionality models.
+        if dim_limit is not None:
+            if n > int(dim_limit * 1.5):
+                fitness += ((n - dim_limit) * (penalty * dim_limit))
+            elif n > dim_limit:
+                fitness += ((n - dim_limit) * penalty)
 
+        return fitness
 
 
 
