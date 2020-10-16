@@ -368,6 +368,16 @@ class DrugDiscovery:
     def calculateMAE(self, experimental, predictions):
     	errors = [abs(experimental[i] - predictions[i]) for i in range(experimental.__len__())]
         return sum(errors) / experimental.__len__()
+    #**********************************************************************************************
+    def calculateRMSE(self, experimental, predictions):
+        sum_of_squares = 0
+        errors_below_1 = 0
+        for mol in range(experimental.__len__()):
+            abs_error = abs(experimental[mol] - predictions[mol])
+            sum_of_squares += pow(abs_error, 2)
+            if abs_error < 1:
+                errors_below_1 += 1
+        return sqrt(sum_of_squares / experimental.__len__()), int(errors_below_1)
 
 
 
