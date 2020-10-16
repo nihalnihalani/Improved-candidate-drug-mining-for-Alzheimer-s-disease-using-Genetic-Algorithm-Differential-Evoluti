@@ -373,7 +373,11 @@ class DrugDiscovery:
         sum_of_squares = 0
         errors_below_1 = 0
         for mol in range(experimental.__len__()):
-      
+            abs_error = abs(experimental[mol] - predictions[mol])
+            sum_of_squares += pow(abs_error, 2)
+            if abs_error < 1:
+                errors_below_1 += 1
+        return sqrt(sum_of_squares / experimental.__len__()), int(errors_below_1)
 
 
 
