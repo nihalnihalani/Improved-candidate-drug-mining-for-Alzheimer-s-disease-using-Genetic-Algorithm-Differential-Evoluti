@@ -396,14 +396,7 @@ class DrugDiscovery:
         numDescriptors=self.X_Train.shape[1]
         validRow = zeros((1,numDescriptors))
         count = 0
-        while (count < 5) or (count > 25):
-
-            for i in range(numDescriptors):
-                rand = round(random.uniform(0,100),2)
-                if rand < 1.5:
-                    validRow[0][i] = 1
-                    count +=1
-        return validRow
+        
 
 
 
