@@ -378,7 +378,7 @@ class DrugDiscovery:
             if abs_error < 1:
                 errors_below_1 += 1
         return sqrt(sum_of_squares / experimental.__len__()), int(errors_below_1)
-    
+
     simplefilter("ignore", category=ConvergenceWarning)
     def write(self, exportfile, descriptors, fitnesses, modelnames,
               dimensionality, r2trainscores,r2validscores, r2testscores, rmse, mae, acc_pred):
@@ -389,6 +389,21 @@ class DrugDiscovery:
                                      dimensionality[key], r2trainscores[key], r2validscores[key],
                                      r2testscores[key], rmse[key], mae[key], acc_pred[key]
                                      ])
+
+
+
+    def getValidRow(self):
+        numDescriptors=self.X_Train.shape[1]
+        validRow = zeros((1,numDescriptors))
+        count = 0
+        while (count < 5) or (count > 25):
+
+            for i in range(numDescriptors):
+                rand = round(random.uniform(0,100),2)
+                if rand < 1.5:
+                    validRow[0][i] = 1
+                    count +=1
+        return validRow
 
 
 
