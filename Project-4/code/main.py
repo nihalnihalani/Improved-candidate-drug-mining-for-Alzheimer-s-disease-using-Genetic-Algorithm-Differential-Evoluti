@@ -406,6 +406,9 @@ class DrugDiscovery:
         return validRow
 
 
+    def BPSO(self, regressor, instructions, numGenerations, fileW, data):
+
+
 
 
 
