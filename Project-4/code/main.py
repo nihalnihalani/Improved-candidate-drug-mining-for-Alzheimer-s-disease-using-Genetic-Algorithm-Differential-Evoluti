@@ -429,6 +429,11 @@ class DrugDiscovery:
                         continue
             return population
 
+        def create_initial_local_best_matrix(population, fitness):
+            local_best_matrix = population
+            local_fitness = fitness
+            return local_best_matrix, local_fitness
+
 
 
 
