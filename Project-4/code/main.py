@@ -414,6 +414,22 @@ class DrugDiscovery:
 
             return velocity
 
+        def create_initial_population(population):
+            L = (0.015 * 593)
+            for i in range(50):
+                cc = 0
+                for j in range(593):
+                    r = random.randint(0,593)
+                    if r < L:
+                        population[i][j] = 1
+                        cc += 1
+                    if cc < 5 and cc > 25:
+                        i -= 1
+                    else:
+                        continue
+            return population
+
+
 
 
 
