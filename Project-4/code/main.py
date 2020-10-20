@@ -458,6 +458,16 @@ class DrugDiscovery:
                         mainlist2[i] = mainlist1[i]
             return local_best_matrix, mainlist2
 
+        def create_initial_global_best_row(init_local_best_matrix, init_local_fitness):
+            global global_best_row
+            global global_best_row_fitness
+
+            global_best_row = np.zeros(593)
+            global_best_row_fitness = 200.00
+
+            print('gloobal best row fitness:',global_best_row_fitness)
+            return global_best_row, global_best_row_fitness
+
 
 
 
