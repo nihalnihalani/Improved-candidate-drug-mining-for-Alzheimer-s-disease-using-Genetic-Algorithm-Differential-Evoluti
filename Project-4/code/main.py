@@ -557,6 +557,17 @@ class DrugDiscovery:
 
     #**********************************************************************************************
     # try to optimize this code if possible
+    def open_descriptor_matrix(self,fileName):
+        preferred_delimiters = [';', '\t', ',', '\n']
+
+        preferred_delimiters = [';', '\t', ',', '\n']
+        file=fileName
+        dataArray=np.genfromtxt(file,delimiter=',')
+
+        if (min(dataArray.shape) == 1):  # flatten arrays of one row or column
+            return dataArray.flatten(order='C')
+        else:
+            return dataArray
  
 
 
