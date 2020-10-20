@@ -489,6 +489,28 @@ class DrugDiscovery:
                     new_velocity[i][j] = (inertia * velocity[i][j]) + term1 + term2
 
             print(new_velocity[2][20])
+            return new_velocity
+
+        def create_new_population(population, velocity, local_best_matrix, alpha):
+            # print('Aftr getting insid cr new pop')
+            # new_population = np.zeros((50, 593))
+            oldPopulation = population
+
+            p = 0.5 * (1 + alpha)
+
+            for i in range(50):
+                for j in range(593):
+                    if velocity[i][j] <= alpha:
+                        population[i][j] = oldPopulation[i][j]
+                    elif velocity[i][j] > alpha and velocity[i][j] <= p:
+                        population[i][j] = local_best_matrix[i][j]
+                    elif velocity[i][j] > p and velocity[i][j] <= 1:
+                        population[i][j] = global_best_row[j]
+                    else:
+                        population[i][j] = oldPopulation[i][j]
+                if self.isValidRow(population[i]) == False:
+                    population[i] = self.getValidRow()
+            return population
  
 
 
