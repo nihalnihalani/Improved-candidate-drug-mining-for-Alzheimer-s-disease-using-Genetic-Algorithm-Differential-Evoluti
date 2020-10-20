@@ -511,6 +511,41 @@ class DrugDiscovery:
                 if self.isValidRow(population[i]) == False:
                     population[i] = self.getValidRow()
             return population
+
+        def evolve_population(population, velocity, init_local_best_matrix, local_fitness, regressor, instructions,data,fileW,trackDesc, numGenerations,  global_best_row, global_best_row_fitness):
+            alpha = 0.5
+
+            for i in range(numGenerations):
+                print("Epoch ", i,"/",numGenerations)
+
+                population = create_new_population(population, velocity, init_local_best_matrix, alpha)
+                self.trackDesc, trackFitness = self.evaluate_population(model = regressor, instructions = instructions, data = self.data, population = population, exportfile = fileW)
+
+
+                init_local_best_matrix, local_fitness = UpdateNewLocalBestMatrix(population, trackFitness, init_local_best_matrix, local_fitness, trackDesc, i)
+                global_best_row, global_best_row_fitness =  update_global_best_row(init_local_best_matrix, local_fitness)
+
+
+                velocity = update_velocity(velocity, population, init_local_best_matrix, global_best_row)
+                alpha = alpha - (0.17 / 10000)
+        fileW.writerow(['Descriptor ID', 'Fitness', 'Algorithm', 'Dimen', 'R2_Train', 'R2_Valid', 'R2_Test', 'RMSE', 'MAE', 'Pred Acc'])
+
+        population = zeros((50,self.X_Train.shape[1]))
+        velocity = zeros((50,self.X_Train.shape[1]))
+        population = create_initial_population(population)
+        velocity = create_initial_velocity(velocity)
+
+        self.trackDesc, self.trackFitness   = self.evaluate_population(model=regressor, instructions=instructions, data=self.data, population=population, exportfile=fileW)
+
+        global_best_row = np.zeros(593)
+        global_best_row_fitness = 2000
+
+
+        init_local_best_matrix, init_local_fitness = create_initial_local_best_matrix(population, self.trackFitness)
+        global_best_row, global_best_row_fitness = create_initial_global_best_row(init_local_best_matrix, init_local_fitness)
+        #this is the main recurring function
+        evolve_population(population, velocity, init_local_best_matrix, init_local_fitness, \
+                          regressor, instructions, self.data, fileW, self.trackDesc, numGenerations, global_best_row, global_best_row_fitness)
  
 
 
