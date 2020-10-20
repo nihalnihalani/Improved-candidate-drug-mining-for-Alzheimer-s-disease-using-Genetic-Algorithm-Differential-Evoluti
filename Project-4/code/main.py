@@ -468,6 +468,18 @@ class DrugDiscovery:
             print('gloobal best row fitness:',global_best_row_fitness)
             return global_best_row, global_best_row_fitness
 
+        def update_global_best_row(local_best_matrix, local_fitness):
+            global global_best_row
+            global global_best_row_fitness
+
+            idx = local_fitness.index(min(local_fitness))
+
+            if local_fitness[idx] < global_best_row_fitness:
+                global_best_row = local_best_matrix[idx]
+                global_best_row_fitness = local_fitness[idx]
+
+            return global_best_row,global_best_row_fitness
+
 
 
 
