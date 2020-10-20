@@ -480,6 +480,16 @@ class DrugDiscovery:
 
             return global_best_row,global_best_row_fitness
 
+        def update_velocity(velocity, population, local_best_matrix, global_best_row, c1=2, c2=2, inertia=0.9):
+            new_velocity = np.zeros((50, 593))
+            for i in range(50):
+                for j in range(593):
+                    term1 = c1 * numpy.random.random() * (local_best_matrix[i][j] - population[i][j])
+                    term2 = c2 * numpy.random.random() * (global_best_row[j] - population[i][j])
+                    new_velocity[i][j] = (inertia * velocity[i][j]) + term1 + term2
+
+            print(new_velocity[2][20])
+ 
 
 
 
