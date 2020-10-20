@@ -434,6 +434,30 @@ class DrugDiscovery:
             local_fitness = fitness
             return local_best_matrix, local_fitness
 
+        def UpdateNewLocalBestMatrix(population, fitness, local_best_matrix, local_fitness, trackDesc, numGenerations):
+
+            if numGenerations > 0:
+                mainlist1 = list(fitness.values())
+                for i in range(50):
+
+                    if mainlist1[i] < local_fitness[i]:
+                        local_best_matrix[i] = population[i]
+
+                        local_fitness[i] = mainlist1[i]
+
+                mainlist2 = local_fitness
+            else:
+                a = fitness.copy()
+                b = local_fitness.copy()
+                mainlist1 = list(fitness.values())
+                mainlist2 = list(local_fitness.values())
+                for i in range(50):
+                    if mainlist1[i] < mainlist2[i]:
+                        local_best_matrix[i] = population[i]
+                        # update the local fitness since local best matrix was changed
+                        mainlist2[i] = mainlist1[i]
+            return local_best_matrix, mainlist2
+
 
 
 
