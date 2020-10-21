@@ -568,6 +568,40 @@ class DrugDiscovery:
             return dataArray.flatten(order='C')
         else:
             return dataArray
+
+
+    #************************************************************************************
+    #Try to optimize this code if possible
+    def open_target_values(self,fileName):
+        preferred_delimiters = [';', '\t', ',', '\n']
+
+        with open(fileName, mode='r') as csvfile:
+            # Dynamically determining the delimiter used in the input file
+            row = csvfile.readline()
+            delimit = ','
+            for d in preferred_delimiters:
+                if d in row:
+                    delimit = d
+                    break
+
+            csvfile.seek(0)
+            datalist = csvfile.read().split(delimit)
+            if ' ' in datalist:
+                datalist = datalist[0].split(' ')
+
+        for i in range(datalist.__len__()):
+            datalist[i] = datalist[i].replace('\n', '')
+            try:
+                datalist[i] = float(datalist[i])
+            except:
+                datalist[i] = datalist[i]
+
+        try:
+            datalist.remove('')
+        except ValueError:
+            no_empty_strings = True
+
+        return datalist
  
 
 
