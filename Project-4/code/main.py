@@ -602,6 +602,45 @@ class DrugDiscovery:
             no_empty_strings = True
 
         return datalist
+        #**********************************************************************************************
+    def removeInvalidData(self, descriptors, targets):
+        # Numpy to df and series
+        descriptors_df = pd.DataFrame(descriptors)
+        targets_series = pd.Series(targets)
+
+        # Junk to NaN
+        descriptors_df = descriptors_df.apply(pd.to_numeric, errors='coerce')
+
+        # Get indexes of rows with any NaN values
+        descriptor_rows_with_nan = [index for index, row in descriptors_df.iterrows() if row.isnull().any()]
+
+        # Drop rows with any NaN values
+        descriptors_df = descriptors_df.drop(descriptor_rows_with_nan)
+        targets_series = targets_series.drop(descriptor_rows_with_nan)
+        delCount = len(descriptor_rows_with_nan)
+        print("Dropped ", delCount, " rows containing any junk values.")
+
+        # Drop columns that have more than 20 junks
+        numJunkPerCol_Series = descriptors_df.isna().sum()
+        delCount = numJunkPerCol_Series[numJunkPerCol_Series > 20].count()
+        descriptors_df = descriptors_df.drop(numJunkPerCol_Series[numJunkPerCol_Series > 20].index, axis=1)
+        print("Dropped ", delCount, " columns containing more than 20 junk values.")
+
+        # change NaN to 0
+        print("Converting remaining junk values to 0...")
+        descriptors_df = descriptors_df.fillna(0)
+
+        # drop columns containing all zeros
+        tempLen = len(descriptors_df.columns)
+        descriptors_df = descriptors_df.loc[:, descriptors_df.ne(0).any(axis=0)]
+        delCount = tempLen - len(descriptors_df.columns)
+        print("Dropped ", delCount, " columns containing all zeros.")
+
+        # df and series to numpy for return
+        descriptors = descriptors_df.to_numpy()
+        targets = targets_series.to_numpy()
+
+        return descriptors, targets
 
     #**********************************************************************************************
     # Removes constant and near-constant descriptors.
