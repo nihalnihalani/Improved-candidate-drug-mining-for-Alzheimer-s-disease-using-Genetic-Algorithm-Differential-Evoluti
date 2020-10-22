@@ -647,7 +647,58 @@ class DrugDiscovery:
     # But I think also does that too for real data.
     # So for now take this as it is
 
+def main():
+    start_time = time.time()
+    Alzheimer = DrugDiscovery("Practice_Descriptors.csv","Practice_Targets.csv")
+    Alzheimer.processData()
+    X_Train, X_Valid, X_Test, Y_Train, Y_Valid, Y_Test, data = Alzheimer.splitData()
+    #Alzheimer.setUpDemoModel()
 
+    directory = os.path.join(os.getcwd(), 'Outputs')
+
+    #MLR
+    print("\nMLR: ")
+
+    output_filename = 'MLR_Outputs'
+    file_path = os.path.join(directory, output_filename)
+    os.makedirs(os.path.dirname(file_path), exist_ok=True)
+    fileOut = open(file_path, 'w', newline='')  # create stream object for output file
+    fileW = csv.writer(fileOut)
+
+    regressor = linear_model.LinearRegression()
+
+    instructions = {'dim_limit': 4, 'algorithm': 'BPSO', 'MLM_type': 'MLR'}
+    regressor.fit(X_Train, Y_Train)
+    Alzheimer.BPSO(regressor, instructions, 10000, fileW, data)
+
+    #SVM
+    print("\nSVM: ")
+    output_filename = 'SVM_Outputs'
+    file_path = os.path.join(directory, output_filename)
+    os.makedirs(os.path.dirname(file_path), exist_ok=True)
+    fileOut = open(file_path, 'w', newline='')  # create stream object for output file
+    fileW = csv.writer(fileOut)
+
+    regressor = svm.SVR()
+
+    instructions = {'dim_limit': 4, 'algorithm': 'BPSO', 'MLM_type': 'SVM'}
+    Alzheimer.BPSO(regressor, instructions, 10000, fileW, data)
+
+    #ANN
+    print("\nANN: ")
+    output_filename = 'ANN_Outputs'
+    file_path = os.path.join(directory, output_filename)
+    os.makedirs(os.path.dirname(file_path), exist_ok=True)
+    fileOut = open(file_path, 'w', newline='')  # create stream object for output file
+    fileW = csv.writer(fileOut)
+    regressor = neural_network.MLPRegressor(hidden_layer_sizes=(400, 200, 100, 50, 25))
+
+    instructions = {'dim_limit': 4, 'algorithm': 'BPSO', 'MLM_type': 'ANN'}
+    Alzheimer.BPSO(regressor, instructions, 1300, fileW, data)
+    print("--- %s seconds ---" % (time.time() - start_time))
+
+if __name__ == "__main__":
+    main()
 
  
 
