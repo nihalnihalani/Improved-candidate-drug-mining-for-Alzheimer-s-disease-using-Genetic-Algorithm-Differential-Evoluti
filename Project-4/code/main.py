@@ -671,19 +671,6 @@ def main():
     regressor.fit(X_Train, Y_Train)
     Alzheimer.BPSO(regressor, instructions, 10000, fileW, data)
 
-    #SVM
-    print("\nSVM: ")
-    output_filename = 'SVM_Outputs'
-    file_path = os.path.join(directory, output_filename)
-    os.makedirs(os.path.dirname(file_path), exist_ok=True)
-    fileOut = open(file_path, 'w', newline='')  # create stream object for output file
-    fileW = csv.writer(fileOut)
-
-    regressor = svm.SVR()
-
-    instructions = {'dim_limit': 4, 'algorithm': 'BPSO', 'MLM_type': 'SVM'}
-    Alzheimer.BPSO(regressor, instructions, 10000, fileW, data)
-
     #ANN
     print("\nANN: ")
     output_filename = 'ANN_Outputs'
