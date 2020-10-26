@@ -45,3 +45,12 @@ class DrugDiscovery:
         #sort data
         self.descriptors, self.targets = self.sort_descriptor_matrix(self.descriptors, self.targets)
         
+#**********************************************************************************************       
+    def processData(self):
+        self.descriptors, self.targets = self.removeInvalidData(self.descriptors, self.targets)
+        self.descriptors, self.active_descriptors = self.removeNearConstantColumns(self.descriptors)
+        # Rescale the descriptor data
+        self.descriptors = self.rescale_data(self.descriptors)
+        #sort data
+        self.descriptors, self.targets = self.sort_descriptor_matrix(self.descriptors, self.targets)
+        
