@@ -142,4 +142,91 @@ class DrugDiscovery:
     #         population = self.mutatePopulation(population)
 
 
+    # def DifferentialEvolutionModel(self, regressor, instructions, numGenerations, fileW):
+
+    #     fileW.writerow(['Descriptor ID', 'Fitness', 'Algorithm', 'Dimen', 'R2_Train', 'R2_Valid', 'R2_Test', 'RMSE', 'MAE', 'Abs. Errors'])
+    #     population = zeros((50,self.X_Train.shape[1]))
+
+    #     for i in range(50):
+    #             population[i] = self.getValidRow()
+
+
+    #     for generation in range(numGenerations):
+    #         print("Epoch ", generation,"/",numGenerations)
+
+    #         trackDesc, trackFitness, trackModel, \
+    #         trackDimen, trackR2train, trackR2valid, \
+    #         trackR2test, testRMSE, testMAE, \
+    #         testAccPred = self.evaluate_population(model=regressor, instructions=instructions, data=self.data,population=population, exportfile=fileW)
+    #         counter = 0
+    #         dummy = []
+    #         trail = []
+    #         for i in range(50):
+    #             trail.append(i)
+
+    #         for key in trackDesc.keys():
+    #             dummy.append(trackFitness[key])
+
+    #         df = pd.DataFrame(dummy)
+    #         df.columns = ['fitness']
+    #         df1 = pd.DataFrame(trail)
+    #         df1.columns = ['order']
+
+
+    #         # print('Now df1!')
+    #         # print(df1)
+    #         df['order'] = df1
+
+
+
+    #         df2 = df.sort_values('fitness')
+
+
+    #         order = []
+
+    #         order=df2['order'].values.tolist()
+    #         binary_model2 = population.copy()
+
+    #         for i in range(len(order)):
+
+    #           a = order[i]
+    #           binary_model2[i] = population[a]
+
+    #         population = binary_model2
+    #         oldPopulation = population
+    #         F = 0.7
+    #         CV = 0.7
+    #         for i in range(1, 50):
+
+
+    #             V = zeros(593)
+
+
+    #             a = random.randint(0, 49)
+    #             b = random.randint(0, 49)
+    #             c = random.randint(0, 49)
+
+
+    #             for j in range(self.X_Train.shape[1]):
+    #               V[j] = math.floor(abs(oldPopulation[a,j] + (F * (oldPopulation[b,j]-oldPopulation[c,j]))))
+
+    #               rand_num = random.uniform(0, 1)
+    #               if (rand_num < CV):
+    #                   population[i, j] = V[j]
+    #               else:
+    #                   continue
+
+    #         for i in range(0,50):
+    #             check  = 0
+    #             for j in range(0,593):
+    #                 if population[i, j] == 1:
+    #                     check += 1
+
+    #             if check < 5 or check > 25:
+    #                 population[i] = self.getValidRow()
+    #         # print(population)        
+
+#**********************************************************************************************
+
+
 
