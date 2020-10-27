@@ -84,3 +84,12 @@ class DrugDiscovery:
                                                            population=self.binary_model, exportfile=None)
         self.outputModelInfo(trackDesc, trackFitness, trackModel, trackDimen, trackR2train, trackR2valid, trackR2test, testRMSE, testMAE, testAccPred)
 
+#**********************************************************************************************
+
+    def isValidRow(self, row):
+        count = 0
+        for value in row:
+            if value == 1:
+                count += 1
+            if count < 5 or count > 25:
+                return False
