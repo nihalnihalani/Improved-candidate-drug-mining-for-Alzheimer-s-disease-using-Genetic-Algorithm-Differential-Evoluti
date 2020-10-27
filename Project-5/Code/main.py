@@ -109,3 +109,37 @@ class DrugDiscovery:
                     count +=1
         return validRow
 
+# def geneticModel(self, regressor, instructions, numGenerations, fileW):
+
+    #     fileW.writerow(['Descriptor ID', 'Fitness', 'Algorithm', 'Dimen', 'R2_Train', 'R2_Valid', 'R2_Test', 'Q2', 'RMSE', 'MAE', 'Abs. Errors'])
+
+    #     population = zeros((50,self.X_Train.shape[1]))
+
+    #     for i in range(50):
+    #         population[i] = self.getValidRow()
+
+
+    #     for generation in range(numGenerations):
+    #         print("Generation: ", generation)
+
+    #         trackDesc, trackFitness, trackModel, \
+    #         trackDimen, trackR2train, trackR2valid, \
+    #         trackR2test, testRMSE, testMAE, \
+    #         testAccPred = self.evaluate_population(model=regressor, instructions=instructions, data=self.data,population=population, exportfile=fileW)
+
+    #         oldPopulation = population.copy()
+    #         population = zeros((50, self.X_Train.shape[1]))
+
+    #         dad, mom = self.generateParents(oldPopulation, trackFitness)
+    #         child1, child2 = self.generateChildren(dad, mom)
+    #         population[0] = dad
+    #         population[1] = mom
+    #         population[2] = child1
+    #         population[3] = child2
+    #         for i in range(4,50):
+    #             population[i] = self.getValidRow()
+    #         # self.outputModelInfo(trackDesc, trackFitness, trackModel, trackDimen, trackR2train, trackR2valid, trackR2test, testRMSE, testMAE, testAccPred)
+    #         population = self.mutatePopulation(population)
+
+
+
