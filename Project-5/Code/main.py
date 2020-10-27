@@ -53,4 +53,4 @@ class DrugDiscovery:
         self.descriptors = self.rescale_data(self.descriptors)
         #sort data
         self.descriptors, self.targets = self.sort_descriptor_matrix(self.descriptors, self.targets)
-        
+        return self.X_Train, self.X_Valid, self.X_Test, self.Y_Train, self.Y_Valid, self.Y_Test, self.data
