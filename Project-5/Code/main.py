@@ -237,5 +237,15 @@ class DrugDiscovery:
 
   #           return velocity
 
+    def DE_BinaryParticleSwarmOptimization(self, regressor, instructions, numGenerations, fileW, data):
+
+
+
+        def initial_velocity(velocity):
+            for i in range(50): 
+                for j in range(593):
+                    velocity[i][j] = random.uniform(0, 1)
+            return velocity
+
 
 
