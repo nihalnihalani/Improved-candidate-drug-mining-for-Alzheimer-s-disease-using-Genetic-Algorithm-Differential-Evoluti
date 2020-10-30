@@ -313,5 +313,12 @@ class DrugDiscovery:
 
             idx = local_fitness.index(min(local_fitness))
 
+            if local_fitness[idx] < global_best_row_fitness:
+                global_best_row = local_best_matrix[idx]
+                global_best_row_fitness = local_fitness[idx]
+
+                print('New Update in global best row with fitness: ', global_best_row_fitness)
+            return global_best_row,global_best_row_fitness
+
 
 
