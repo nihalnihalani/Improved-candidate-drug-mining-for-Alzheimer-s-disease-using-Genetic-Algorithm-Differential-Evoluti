@@ -320,5 +320,13 @@ class DrugDiscovery:
                 print('New Update in global best row with fitness: ', global_best_row_fitness)
             return global_best_row,global_best_row_fitness
 
+#**********************************************************************************************
+
+        def create_new_population(population, velocity, initial_local_best_matrix, alpha):
+            new_population = np.zeros((50, 593))
+            p = 0.5*(1+alpha)
+            beta = 0.004
+            for i in range(50):
+
 
 
