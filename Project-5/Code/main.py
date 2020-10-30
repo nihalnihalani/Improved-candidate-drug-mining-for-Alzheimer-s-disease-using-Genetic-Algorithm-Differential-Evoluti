@@ -262,18 +262,13 @@ class DrugDiscovery:
             return population
 
 #**********************************************************************************************
+        
+        def create_initial_local_best_matrix(population, fitness):
 
-        def initial_population(velocity):
-            population = np.zeros((50, 593))
-            Lambda=0.01
-            for i in range(50):
-                for j in range(593):
-                    if velocity[i][j] <= Lambda:
-                        population[i][j] = 1
-                    else:
-                        population[i][j] = 0
-
-            return population
+            fitness = list(fitness.values())
+            local_best_matrix = population
+            local_fitness = fitness
+            return local_best_matrix, local_fitness
 
 
 
