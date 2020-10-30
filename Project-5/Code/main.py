@@ -305,5 +305,13 @@ class DrugDiscovery:
                     local_fitness[i] = fitness[i]
             return local_best_matrix, local_fitness
 
+#**********************************************************************************************
+        
+        def update_global_best_row(local_best_matrix, local_fitness):
+            global global_best_row
+            global global_best_row_fitness
+
+            idx = local_fitness.index(min(local_fitness))
+
 
 
