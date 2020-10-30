@@ -261,5 +261,19 @@ class DrugDiscovery:
 
             return population
 
+#**********************************************************************************************
+
+        def initial_population(velocity):
+            population = np.zeros((50, 593))
+            Lambda=0.01
+            for i in range(50):
+                for j in range(593):
+                    if velocity[i][j] <= Lambda:
+                        population[i][j] = 1
+                    else:
+                        population[i][j] = 0
+
+            return population
+
 
 
