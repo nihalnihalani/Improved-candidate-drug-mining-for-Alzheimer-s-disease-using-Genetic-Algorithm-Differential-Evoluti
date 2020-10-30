@@ -270,5 +270,25 @@ class DrugDiscovery:
             local_fitness = fitness
             return local_best_matrix, local_fitness
 
+#**********************************************************************************************
+
+        def create_initial_global_best_row(local_best_matrix, local_fitness):
+            global global_best_row
+            global global_best_row_fitness
+
+            # global_best_row = np.zeros(593)
+            global_best_row_fitness = 200.00
+
+            idx = local_fitness.index(min(local_fitness))
+
+            if local_fitness[idx] < global_best_row_fitness:
+                global_best_row = local_best_matrix[idx]
+                global_best_row_fitness = local_fitness[idx]
+
+                print('New Global best row has fitness: ', global_best_row_fitness)
+
+
+            return global_best_row, global_best_row_fitness  
+
 
 
