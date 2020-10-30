@@ -327,6 +327,21 @@ class DrugDiscovery:
             p = 0.5*(1+alpha)
             beta = 0.004
             for i in range(50):
+                
+                for j in range(593):
+                    if (alpha < velocity[i,j] and velocity[i,j] <= p):
+                        new_population[i,j] = initial_local_best_matrix[i,j]
+                    elif (p < velocity[i,j] and velocity[i,j] <= (1-beta)):
+                        new_population[i,j] = global_best_row[j]
+                    elif ((1-beta) < velocity[i,j]) and (velocity[i,j] <=1):
+                        new_population[i,j] = 1 - population[i,j]
+                    else:
+                        new_population[i,j] = population[i,j]
+                if self.isValidRow(new_population[i]) == False:
+                    new_population[i] = self.getValidRow()
+
+                
+            return new_population
 
 
 
