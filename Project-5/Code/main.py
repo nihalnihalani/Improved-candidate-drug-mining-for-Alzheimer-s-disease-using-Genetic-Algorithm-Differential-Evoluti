@@ -295,4 +295,15 @@ class DrugDiscovery:
         def UpdateNewLocalBestMatrix(population, fitness, local_best_matrix, local_fitness):
 
 
+            fitness = list(fitness.values())
+
+            for i in range(50):
+                if fitness[i] < local_fitness[i]:
+                    local_best_matrix[i] = population[i]
+
+                    # update the local fitness since local best matrix was changed
+                    local_fitness[i] = fitness[i]
+            return local_best_matrix, local_fitness
+
+
 
