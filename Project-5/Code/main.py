@@ -290,5 +290,9 @@ class DrugDiscovery:
 
             return global_best_row, global_best_row_fitness  
 
+#**********************************************************************************************
+       
+        def UpdateNewLocalBestMatrix(population, fitness, local_best_matrix, local_fitness):
+
 
 
