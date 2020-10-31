@@ -342,6 +342,12 @@ class DrugDiscovery:
 
                 
             return new_population
+#**********************************************************************************************
+
+        def new_velocity(velocity, population):
+            F = 0.7
+            for i in range(50):
+                velocity[i] = population[i]
 
 
 
