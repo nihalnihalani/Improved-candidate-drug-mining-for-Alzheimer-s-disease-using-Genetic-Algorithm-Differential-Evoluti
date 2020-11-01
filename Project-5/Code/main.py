@@ -371,6 +371,20 @@ class DrugDiscovery:
             alpha = 0.5
 
             for i in range(1,numGenerations+1):
+                
+                velocity = new_velocity(velocity, population)             
+                population = create_new_population(population, velocity, init_local_best_matrix, alpha)
+                
+                self.trackDesc, trackFitness = self.evaluate_population(model = regressor, instructions = instructions, data = self.data, population = population, exportfile = fileW)
+
+                init_local_best_matrix, local_fitness = UpdateNewLocalBestMatrix(population, trackFitness, init_local_best_matrix, local_fitness)
+                global_best_row, global_best_row_fitness =  update_global_best_row(init_local_best_matrix, local_fitness)
+                
+                alpha = alpha - (0.17 / numGenerations)
+                
+                print(f'End of generation number: {i}')
+        
+            print('End of generations!!')
 
 
 
