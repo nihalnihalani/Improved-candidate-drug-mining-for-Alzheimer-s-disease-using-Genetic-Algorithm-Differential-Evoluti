@@ -365,5 +365,12 @@ class DrugDiscovery:
                     continue
             return velocity
 
+#**********************************************************************************************       
+
+        def update_population(population, velocity, init_local_best_matrix, local_fitness, regressor, instructions,data,fileW, numGenerations):
+            alpha = 0.5
+
+            for i in range(1,numGenerations+1):
+
 
 
