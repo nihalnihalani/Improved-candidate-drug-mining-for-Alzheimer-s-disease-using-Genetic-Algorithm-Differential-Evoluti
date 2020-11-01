@@ -348,6 +348,22 @@ class DrugDiscovery:
             F = 0.7
             for i in range(50):
                 velocity[i] = population[i]
+                
+                a = random.randint(0,49)
+                b = random.randint(0,49)
+                c = random.randint(0,49)
+              
+                for j in range(0, 593):
+                    velocity[i,j] = math.floor(abs(population[c, j] + (F * (population[b, j] - population[a, j]))))
+
+                CR = 0.7
+                
+                Random = random.uniform(0, 1)
+                if (Random < CR):
+                    velocity[i,j] = population[i,j]
+                else:
+                    continue
+            return velocity
 
 
 
