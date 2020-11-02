@@ -384,21 +384,28 @@ class DrugDiscovery:
                 
                 print(f'End of generation number: {i}')
         
-            print('End of generations!!')
-                
-                velocity = new_velocity(velocity, population)             
-                population = create_new_population(population, velocity, init_local_best_matrix, alpha)
-                
-                self.trackDesc, trackFitness = self.evaluate_population(model = regressor, instructions = instructions, data = self.data, population = population, exportfile = fileW)
-
-                init_local_best_matrix, local_fitness = UpdateNewLocalBestMatrix(population, trackFitness, init_local_best_matrix, local_fitness)
-                global_best_row, global_best_row_fitness =  update_global_best_row(init_local_best_matrix, local_fitness)
-                
-                alpha = alpha - (0.17 / numGenerations)
-                
-                print(f'End of generation number: {i}')
+#**********************************************************************************************
         
-            print('End of generations!!')
+        fileW.writerow(['Descriptor ID', 'Fitness', 'Algorithm', 'Dimention', 'R2_Train', 'R2_Valid', 'R2_Test', 'RMSE', 'MAE', 'Accuracy'])
+        
+        velocity = zeros((50,self.X_Train.shape[1]))
+        velocity = initial_velocity(velocity)
+        population = initial_population(velocity)        
+        
+
+        self.trackDesc, self.trackFitness  = self.evaluate_population(model=regressor, instructions=instructions, data=self.data, population=population, exportfile=fileW)
+ 
+        global_best_row = np.zeros(593)
+        global_best_row_fitness = 2000
+        
+        
+        init_local_best_matrix, init_local_fitness = create_initial_local_best_matrix(population, self.trackFitness)
+        global_best_row, global_best_row_fitness = create_initial_global_best_row(init_local_best_matrix, init_local_fitness)  
+        #this is the main recurring function      
+        update_population(population, velocity, init_local_best_matrix, init_local_fitness, \
+                                        regressor, instructions, self.data, fileW, numGenerations)
+                                        
+        
 
 
 
