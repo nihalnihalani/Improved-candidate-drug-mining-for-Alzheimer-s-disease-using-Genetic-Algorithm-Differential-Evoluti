@@ -414,6 +414,20 @@ class DrugDiscovery:
         
         for key in trackDesc.keys():
             print(str(trackFitness[key]) + "\t\t" + str(trackDimen[key]) + "\t\t\t\t\t" + str(trackR2train[key])             + "\t\t\t\t" + str(trackR2valid[key]) + "\t\t\t\t" + str(testRMSE[key]) + "\t\t" + str(trackDesc[key]))
+            
+#**********************************************************************************************
+# try to optimize this code if possible
+    def open_descriptor_matrix(self,fileName):
+        preferred_delimiters = [';', '\t', ',', '\n']
+
+        preferred_delimiters = [';', '\t', ',', '\n']
+        file=fileName
+        dataArray=np.genfromtxt(file,delimiter=',')
+
+        if (min(dataArray.shape) == 1):  # flatten arrays of one row or column
+            return dataArray.flatten(order='C')
+        else:
+            return dataArray
 
 
 
