@@ -495,3 +495,9 @@ class DrugDiscovery:
         delCount = tempLen - len(descriptors_df.columns)
         print("Dropped ", delCount, " columns containing all zeros.")
 
+        # df and series to numpy for return
+        descriptors = descriptors_df.to_numpy()
+        targets = targets_series.to_numpy()
+
+        return descriptors, targets
+
