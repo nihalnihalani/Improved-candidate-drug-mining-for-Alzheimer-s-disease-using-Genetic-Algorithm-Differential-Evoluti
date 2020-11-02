@@ -484,3 +484,7 @@ class DrugDiscovery:
         delCount = numJunkPerCol_Series[numJunkPerCol_Series > 20].count()
         descriptors_df = descriptors_df.drop(numJunkPerCol_Series[numJunkPerCol_Series > 20].index, axis=1)
         print("Dropped ", delCount, " columns containing more than 20 junk values.")
+
+        # change NaN to 0
+        print("Converting remaining junk values to 0...")
+        descriptors_df = descriptors_df.fillna(0)
