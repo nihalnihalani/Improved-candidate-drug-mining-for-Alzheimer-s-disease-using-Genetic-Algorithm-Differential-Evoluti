@@ -478,3 +478,9 @@ class DrugDiscovery:
         targets_series = targets_series.drop(descriptor_rows_with_nan)
         delCount = len(descriptor_rows_with_nan)
         print("Dropped ", delCount, " rows containing any junk values.")
+
+        # Drop columns that have more than 20 junks
+        numJunkPerCol_Series = descriptors_df.isna().sum()
+        delCount = numJunkPerCol_Series[numJunkPerCol_Series > 20].count()
+        descriptors_df = descriptors_df.drop(numJunkPerCol_Series[numJunkPerCol_Series > 20].index, axis=1)
+        print("Dropped ", delCount, " columns containing more than 20 junk values.")
