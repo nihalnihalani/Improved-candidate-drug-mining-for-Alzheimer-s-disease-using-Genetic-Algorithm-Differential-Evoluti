@@ -488,3 +488,10 @@ class DrugDiscovery:
         # change NaN to 0
         print("Converting remaining junk values to 0...")
         descriptors_df = descriptors_df.fillna(0)
+
+        # drop columns containing all zeros
+        tempLen = len(descriptors_df.columns)
+        descriptors_df = descriptors_df.loc[:, descriptors_df.ne(0).any(axis=0)]
+        delCount = tempLen - len(descriptors_df.columns)
+        print("Dropped ", delCount, " columns containing all zeros.")
+
