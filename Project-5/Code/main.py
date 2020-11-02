@@ -506,3 +506,5 @@ class DrugDiscovery:
     # But I think also does that too for real data.
     # So for now take this as it is
 
+    def removeNearConstantColumns(self, data_matrix, num_unique=10):
+
