@@ -407,5 +407,13 @@ class DrugDiscovery:
                                         
         
 
+#**********************************************************************************************        
+    def outputModelInfo(self,trackDesc, trackFitness, trackModel, trackDimen, trackR2train, trackR2valid, trackR2test, testRMSE, testMAE, testAccPred): 
+        print("\n\nFitness\t\tDimension\t\t\tR_SquareTrain\t\tR_SquareValid\t\tRMSE\t\tDescriptors")
+        print("========================================================================")
+        
+        for key in trackDesc.keys():
+            print(str(trackFitness[key]) + "\t\t" + str(trackDimen[key]) + "\t\t\t\t\t" + str(trackR2train[key])             + "\t\t\t\t" + str(trackR2valid[key]) + "\t\t\t\t" + str(testRMSE[key]) + "\t\t" + str(trackDesc[key]))
+
 
 
