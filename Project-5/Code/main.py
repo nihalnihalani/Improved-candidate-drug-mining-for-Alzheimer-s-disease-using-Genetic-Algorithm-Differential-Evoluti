@@ -461,6 +461,14 @@ class DrugDiscovery:
             no_empty_strings = True
 
         return datalist  
+#**********************************************************************************************   
+    def removeInvalidData(self, descriptors, targets):
+        # Numpy to df and series
+        descriptors_df = pd.DataFrame(descriptors)
+        targets_series = pd.Series(targets)
 
+        # Junk to NaN
+        descriptors_df = descriptors_df.apply(pd.to_numeric, errors='coerce')
 
-
+        # Get indexes of rows with any NaN values
+        descriptor_rows_with_nan = [index for index, row in descriptors_df.iterrows() if row.isnull().any()]
