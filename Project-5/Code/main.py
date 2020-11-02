@@ -500,4 +500,9 @@ class DrugDiscovery:
         targets = targets_series.to_numpy()
 
         return descriptors, targets
+    
+#**********************************************************************************************
+    # Removes constant and near-constant descriptors.
+    # But I think also does that too for real data.
+    # So for now take this as it is
 
