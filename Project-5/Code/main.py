@@ -472,3 +472,9 @@ class DrugDiscovery:
 
         # Get indexes of rows with any NaN values
         descriptor_rows_with_nan = [index for index, row in descriptors_df.iterrows() if row.isnull().any()]
+
+        # Drop rows with any NaN values
+        descriptors_df = descriptors_df.drop(descriptor_rows_with_nan)
+        targets_series = targets_series.drop(descriptor_rows_with_nan)
+        delCount = len(descriptor_rows_with_nan)
+        print("Dropped ", delCount, " rows containing any junk values.")
