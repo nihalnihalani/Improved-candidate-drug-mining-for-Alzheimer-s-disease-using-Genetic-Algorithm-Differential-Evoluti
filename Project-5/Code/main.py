@@ -527,4 +527,13 @@ class DrugDiscovery:
         return rescaled_matrix
 #**********************************************************************************************
     def sort_descriptor_matrix(self, descriptors, targets):
+        # Placing descriptors and targets in ascending order of target (IC50) value.
+        alldata = ndarray((descriptors.shape[0], descriptors.shape[1] + 1))
+        alldata[:, 0] = targets
+        alldata[:, 1:alldata.shape[1]] = descriptors
+        alldata = alldata[alldata[:, 0].argsort()]
+        descriptors = alldata[:, 1:alldata.shape[1]]
+        targets = alldata[:, 0]
+
+        return descriptors, targets
 
