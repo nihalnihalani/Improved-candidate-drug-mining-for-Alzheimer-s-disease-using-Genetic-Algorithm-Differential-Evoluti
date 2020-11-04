@@ -546,3 +546,13 @@ class DrugDiscovery:
         validX_indices = [i for i in range(descriptors.shape[0]) if i % 4 == 1]
         trainX_indices = [i for i in range(descriptors.shape[0]) if i % 4 >= 2]
 
+        TrainX = descriptors[trainX_indices, :]
+        ValidX = descriptors[validX_indices, :]
+        TestX = descriptors[testX_indices, :]
+
+        TrainY = targets[trainX_indices]
+        ValidY = targets[validX_indices]
+        TestY = targets[testX_indices]
+
+        return TrainX, ValidX, TestX, TrainY, ValidY, TestY
+
