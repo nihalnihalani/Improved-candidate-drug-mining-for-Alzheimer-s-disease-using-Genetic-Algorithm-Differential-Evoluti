@@ -581,3 +581,8 @@ class DrugDiscovery:
             
             idx = hashlib.sha1(array(xi)).digest()
 
+            # Condenses binary models to a list of the indices of active features
+            X_train_masked = TrainX.T[xi].T
+            X_validation_masked = ValidateX.T[xi].T
+            X_test_masked = TestX.T[xi].T
+
