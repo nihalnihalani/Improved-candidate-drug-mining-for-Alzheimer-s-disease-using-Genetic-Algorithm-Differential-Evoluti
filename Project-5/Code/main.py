@@ -614,3 +614,28 @@ class DrugDiscovery:
                 #print("Ending program, fitness unacceptably low: ", predictive)
                 continue
 
+            # store stats
+            if fitness[i] < unfit:
+
+                # store stats
+                trackDesc[idx] = (re.sub(",", "_", str(xi)))  # Editing descriptor set to match actual indices in the original data.
+                trackDesc[idx] = (re.sub(",", "_", str(UsedDesc[xi].tolist())))  # Editing descriptor set to match actual indices in the original data.
+
+                trackFitness[idx] = self.sigfig(fitness[i])
+                trackModel[idx] = instructions['algorithm'] + ' with ' + instructions['MLM_type']
+                trackDimen[idx] = int(xi.__len__())
+
+                trackR2[idx] = self.sigfig(r2_train)
+                trackR2PredValidation[idx] = self.sigfig(r2validation)
+                trackR2PredTest[idx] = self.sigfig(r2test)
+
+                trackRMSE[idx] = self.sigfig(model_rmse)
+                trackMAE[idx] = self.sigfig(model_mae)
+                trackAcceptPred[idx] = self.sigfig(float(num_acceptable_preds) / float(Yhat_testing.shape[0]))
+
+            # For loop ends here.
+        
+        self.write(exportfile, trackDesc, trackFitness, trackModel, trackDimen, trackR2, trackR2PredValidation, trackR2PredTest, trackRMSE, trackMAE, trackAcceptPred)
+
+        return trackDesc, trackFitness
+
