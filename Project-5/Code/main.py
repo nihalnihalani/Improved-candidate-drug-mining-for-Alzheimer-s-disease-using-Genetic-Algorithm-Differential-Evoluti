@@ -596,3 +596,10 @@ class DrugDiscovery:
             Yhat_validation = model.predict(X_validation_masked)
             Yhat_testing = model.predict(X_test_masked)
 
+            # Compute R2 scores (Prediction for Validation and Test set)
+            r2_train = model.score(X_train_masked, TrainY)
+            r2validation = model.score(X_validation_masked, ValidateY)
+            r2test = model.score(X_test_masked, TestY)
+            model_rmse, num_acceptable_preds = self.calculateRMSE(TestY, Yhat_testing)
+            model_mae = self.calculateMAE(TestY, Yhat_testing)
+
