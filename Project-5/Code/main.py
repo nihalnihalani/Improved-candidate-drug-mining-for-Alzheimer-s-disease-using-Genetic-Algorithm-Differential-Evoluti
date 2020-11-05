@@ -603,3 +603,14 @@ class DrugDiscovery:
             model_rmse, num_acceptable_preds = self.calculateRMSE(TestY, Yhat_testing)
             model_mae = self.calculateMAE(TestY, Yhat_testing)
 
+            # Calculating fitness value
+            if 'dim_limit' in instructions:
+                fitness[i] = self.get_fitness(xi, TrainY, ValidateY, Yhat_training, Yhat_validation, dim_limit=instructions['dim_limit'])
+            else:
+                fitness[i] = self.get_fitness(xi, TrainY, ValidateY, Yhat_training, Yhat_validation)
+
+            if predictive and ((r2validation < 0.5) or (r2test < 0.5)):
+                # if it's not worth recording, just return the fitness
+                #print("Ending program, fitness unacceptably low: ", predictive)
+                continue
+
