@@ -586,3 +586,8 @@ class DrugDiscovery:
             X_validation_masked = ValidateX.T[xi].T
             X_test_masked = TestX.T[xi].T
 
+            try:
+                model = model.fit(X_train_masked, TrainY)
+            except:
+                return unfit, fitness
+
