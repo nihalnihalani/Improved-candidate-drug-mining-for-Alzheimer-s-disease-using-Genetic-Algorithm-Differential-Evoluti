@@ -555,4 +555,22 @@ class DrugDiscovery:
         TestY = targets[testX_indices]
 
         return TrainX, ValidX, TestX, TrainY, ValidY, TestY
+#**********************************************************************************************
+    def evaluate_population(self, model, instructions, data, population, exportfile):
+        numOfPop = population.shape[0]
+        fitness = zeros(numOfPop)
+        predictive = 0
+        
+        TrainX = data['TrainX']
+        TrainY = data['TrainY']
+        ValidateX = data['ValidateX']
+        ValidateY = data['ValidateY']
+        TestX = data['TestX']
+        TestY = data['TestY']
+        UsedDesc = data['UsedDesc']
+
+        trackDesc, trackFitness, trackModel, trackDimen, trackR2, trackR2PredValidation, \
+        trackR2PredTest, trackRMSE, trackMAE, trackAcceptPred, trackCoefficients = self.InitializeTracks()
+
+        unfit = 1000
 
