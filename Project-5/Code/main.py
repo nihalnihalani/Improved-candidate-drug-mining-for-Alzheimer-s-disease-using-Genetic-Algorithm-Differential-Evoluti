@@ -574,3 +574,10 @@ class DrugDiscovery:
 
         unfit = 1000
 
+        for i in range(numOfPop):
+
+            xi = list(where(population[i] == 1)[0])
+            
+            
+            idx = hashlib.sha1(array(xi)).digest()
+
