@@ -591,3 +591,8 @@ class DrugDiscovery:
             except:
                 return unfit, fitness
 
+            # Computed predicted values
+            Yhat_training = model.predict(X_train_masked)
+            Yhat_validation = model.predict(X_validation_masked)
+            Yhat_testing = model.predict(X_test_masked)
+
