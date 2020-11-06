@@ -639,3 +639,7 @@ class DrugDiscovery:
 
         return trackDesc, trackFitness
 
+#**********************************************************************************************
+    def sigfig(self, x):
+        return float("%.4f"%x)
+
