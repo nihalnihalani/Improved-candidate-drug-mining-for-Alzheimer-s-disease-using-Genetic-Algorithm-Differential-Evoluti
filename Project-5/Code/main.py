@@ -659,4 +659,18 @@ class DrugDiscovery:
 
         return trackDesc, trackFitness, trackAlgo, trackDimen, trackR2, trackR2PredValidation, trackR2PredTest, \
                trackRMSE, trackMAE, trackAcceptPred, trackCoefficients
+#**********************************************************************************************
+    def get_fitness(self, xi, T_actual, V_actual, T_pred, V_pred, gamma=3, dim_limit=None, penalty=0.05):
+        n = len(xi)
+        mT = len(T_actual)
+        mV = len(V_actual)
+
+        train_errors = [T_pred[i] - T_actual[i] for i in range(T_actual.__len__())]
+        RMSE_t = sum([element**2 for element in train_errors]) / mT
+        valid_errors = [V_pred[i] - V_actual[i] for i in range(V_actual.__len__())]
+        RMSE_v = sum([element**2 for element in valid_errors]) / mV
+
+        numerator = ((mT - n - 1) * RMSE_t) + (mV * RMSE_v)
+        denominator = mT - (gamma * n) - 1 + mV
+        fitness = sqrt(numerator/denominator)
 
