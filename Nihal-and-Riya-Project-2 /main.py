@@ -14,7 +14,7 @@ from sklearn import svm
 
 class MainDatamining:
 
-    def __init__(self):
+    def __init__(self) -> object:
         descriptors_file = "Practice_Descriptors.csv"
         targets_file = "Practice_Targets.csv"
         self.process_input = process()
@@ -202,32 +202,7 @@ class MainDatamining:
         print("==================================================================================================")
         for key in trackDesc.keys():
             print(str(trackFitness[key]) + "\t\t" + str(trackDimen[key]) + "\t\t\t\t\t" + str(trackR2train[key]) \
-                  + "\t\t\t\t" + str(trackR2valid[key]) + "\t\t\t\t" + str(testRMSE[key]) + "\t\t" + str(
-                trackDesc[key]))
-        '''
-        for key in trackDesc.keys():
-            #print("Descriptors:")
-            #print("\t" + str(trackDesc[key]))  # This will show the "true" indices of the featured descriptors in the full matrix
-            print("Fitness:")
-            print("\t" + str(trackFitness[key]))
-            print("Model:")
-            print("\t" + str(trackModel[key]))
-            print("Dimensionality:")
-            print("\t" + str(trackDimen[key]))
-            print("R2_Train:")
-            print("\t" + str(trackR2train[key]))
-            print("R2_Valid:")
-            print("\t" + str(trackR2valid[key]))
-            print("R2_Test:")
-            print("\t" + str(trackR2test[key]))
-            print("Testing RMSE:")
-            print("\t" + str(testRMSE[key]))
-            print("Testing MAE:")
-            print("\t" + str(testMAE[key]))
-            print("Acceptable Predictions From Testing Set:")
-            print("\t" + str(100*testAccPred[key]) + "% of predictions")
-        '''
-
+                  + "\t\t\t\t" + str(trackR2valid[key]) + "\t\t\t\t" + str(testRMSE[key]) + "\t\t" + str())
 
 if __name__ == "__main__":
     dataMining = MainDatamining()
