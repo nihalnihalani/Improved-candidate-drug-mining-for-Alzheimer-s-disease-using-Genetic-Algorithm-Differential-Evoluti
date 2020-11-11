@@ -700,3 +700,16 @@ class DrugDiscovery:
                 errors_below_1 += 1
         return sqrt(sum_of_squares / experimental.__len__()), int(errors_below_1)
 
+#**********************************************************************************************
+  
+    simplefilter("ignore", category=ConvergenceWarning)
+    def write(self, exportfile, descriptors, fitnesses, modelnames,
+                    dimensionality, r2trainscores,r2validscores, r2testscores, rmse, mae, acc_pred):
+
+        if exportfile is not None:
+            for key in fitnesses.keys():
+                exportfile.writerow([descriptors[key], fitnesses[key], modelnames[key],
+                                     dimensionality[key], r2trainscores[key], r2validscores[key],
+                                     r2testscores[key], rmse[key], mae[key], acc_pred[key]
+                                     ])
+
