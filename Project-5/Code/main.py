@@ -712,4 +712,69 @@ class DrugDiscovery:
                                      dimensionality[key], r2trainscores[key], r2validscores[key],
                                      r2testscores[key], rmse[key], mae[key], acc_pred[key]
                                      ])
+                                     
 
+
+def main():
+    start_time = time.time()
+    Alzheimer = DrugDiscovery("Practice_Descriptors.csv","Practice_Targets.csv")
+    Alzheimer.processData()
+    X_Train, X_Valid, X_Test, Y_Train, Y_Valid, Y_Test, data = Alzheimer.splitData()
+    #Alzheimer.setUpDemoModel()
+
+    directory = os.path.join(os.getcwd(), 'Outputs')
+
+#**********************************************************************************************
+
+    # #MLR
+    print("\nMLR: ")
+    
+    output_filename = 'MLR_Outputs_Project5.csv'
+    file_path = os.path.join("/content/drive/MyDrive/project5", output_filename)
+    os.makedirs(os.path.dirname(file_path), exist_ok=True)
+    fileOut = open(file_path, 'w', newline='')  # create stream object for output file
+    fileW = csv.writer(fileOut)
+    
+    regressor = linear_model.LinearRegression()
+    
+    instructions = {'dim_limit': 4, 'algorithm': 'DE_BPSO', 'MLM_type': 'MLR'}
+    regressor.fit(X_Train, Y_Train)
+    Alzheimer.DE_BinaryParticleSwarmOptimization(regressor, instructions, 10000, fileW, data)
+
+**********************************************************************************************
+
+    #SVM
+    print("\nSVM: ") 
+
+    output_filename = 'SVM_Outputs_Project5.csv'
+    file_path = os.path.join("/content/drive/MyDrive/project5", output_filename)
+    os.makedirs(os.path.dirname(file_path), exist_ok=True)
+    fileOut = open(file_path, 'w', newline='')  # create stream object for output file
+    fileW = csv.writer(fileOut)
+            
+    regressor = svm.SVR()
+    regressor.fit(X_Train, Y_Train)
+    instructions = {'dim_limit': 4, 'algorithm': 'DE_BPSO', 'MLM_type': 'SVM'}
+    Alzheimer.DE_BinaryParticleSwarmOptimization(regressor, instructions, 10000, fileW, data)
+
+**********************************************************************************************
+
+    #ANN
+    print("\nANN: ") 
+    output_filename = 'ANN_Outputs_Project5.csv'
+    file_path = os.path.join("/content/drive/MyDrive/project5", output_filename)
+    os.makedirs(os.path.dirname(file_path), exist_ok=True)
+    fileOut = open(file_path, 'w', newline='')  # create stream object for output file
+    fileW = csv.writer(fileOut)
+    regressor = neural_network.MLPRegressor(hidden_layer_sizes=(500, 250, 150, 50, 25))
+    regressor.fit(X_Train, Y_Train)
+    instructions = {'dim_limit': 4, 'algorithm': 'DE_BPSO', 'MLM_type': 'ANN'}
+    Alzheimer.DE_BinaryParticleSwarmOptimization(regressor, instructions, 1000, fileW, data)
+    print("--- %s seconds ---" % (time.time() - start_time))
+
+#**********************************************************************************************
+
+if __name__ == "__main__":
+    main()
+
+#**
