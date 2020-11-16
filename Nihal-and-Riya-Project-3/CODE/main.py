@@ -552,7 +552,7 @@ class DrugDiscovery:
 
 
 def main():
-    start_time = time.time()
+    
     Alzheimer = DrugDiscovery("Practice_Descriptors.csv", "Practice_Targets.csv")
     Alzheimer.processData()
     Alzheimer.splitData()
@@ -595,7 +595,7 @@ def main():
     regressor = neural_network.MLPRegressor(hidden_layer_sizes=(50, 8, 8))
     instructions = {'dim_limit': 4, 'algorithm': 'DE', 'MLM_type': 'ANN'}
     Alzheimer.DifferentialEvolutionModel(regressor, instructions, 1200, fileW)
-    print("--- %s seconds ---" % (time.time() - start_time))
+    
 
 
 if __name__ == "__main__":
